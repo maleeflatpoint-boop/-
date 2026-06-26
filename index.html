@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script src="./chatbot.js" defer></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans KR', 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; background: #fff; }
+  a { cursor: pointer; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(36px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes mintPulse {
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 0.3; }
+  }
+</style>
+</helmet>
+
+<!-- ── GLOBAL NAV ── -->
+<nav id="nav" style="position:fixed;top:0;left:0;right:0;z-index:200;height:44px;background:#000000;display:flex;align-items:center;padding:0 28px;transition:background 0.3s">
+  <div style="flex:1;display:flex;align-items:center;gap:40px;">
+    <div style="background:#FFFFFF;border-radius:8px;padding:4px 10px;display:flex;align-items:center;cursor:pointer">
+      <img src="./logo.png" alt="MINTCHOCO" style="height:24px;width:auto;display:block;">
+    </div>
+    <div style="display:flex;gap:28px;">
+      <a href="#services" style="font-size:12px;color:rgba(255,255,255,0.78);text-decoration:none;letter-spacing:-0.12px" style-hover="color:#FFFFFF">서비스</a>
+      <a href="#why" style="font-size:12px;color:rgba(255,255,255,0.78);text-decoration:none;letter-spacing:-0.12px" style-hover="color:#FFFFFF">특장점</a>
+      <a href="#process" style="font-size:12px;color:rgba(255,255,255,0.78);text-decoration:none;letter-spacing:-0.12px" style-hover="color:#FFFFFF">프로세스</a>
+      <a href="#packages" style="font-size:12px;color:rgba(255,255,255,0.78);text-decoration:none;letter-spacing:-0.12px" style-hover="color:#FFFFFF">패키지</a>
+    </div>
+  </div>
+  <a href="#contact" style="background:#1AB98E;color:#FFFFFF;font-size:12px;font-weight:600;padding:7px 18px;border-radius:9999px;text-decoration:none;letter-spacing:0.1px" style-hover="background:#17a57d" style-active="transform:scale(0.95)">무료 상담</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section style="background:#FFFFFF;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:120px 48px 80px;text-align:center;">
+  <div style="max-width:860px;width:100%;animation:fadeUp 0.9s ease both;">
+    <div style="display:inline-block;background:#E8F8F3;color:#1AB98E;font-size:12px;font-weight:600;padding:5px 16px;border-radius:9999px;letter-spacing:0.6px;margin-bottom:36px;">
+      MINTCHOCO Marketing &amp; Strategy
+    </div>
+    <h1 style="font-size:clamp(44px,7vw,72px);font-weight:700;line-height:1.05;letter-spacing:-0.03em;color:#1A1A1A;margin-bottom:28px;font-family:'Noto Sans KR',sans-serif;word-break:keep-all;">
+      데이터로 생각하고,<br>창의성으로 행동하다
+    </h1>
+    <p style="font-size:clamp(18px,2.5vw,24px);font-weight:300;line-height:1.5;color:#595959;margin-bottom:52px;letter-spacing:0;">
+      대기업 마케팅 성장을 이끄는 전략 대행사
+    </p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="#services" style="background:#1AB98E;color:#FFFFFF;font-size:17px;font-weight:400;padding:14px 32px;border-radius:9999px;text-decoration:none;letter-spacing:-0.374px;transition:transform 0.15s" style-hover="background:#17a57d" style-active="transform:scale(0.95)">서비스 알아보기</a>
+      <a href="#contact" style="background:transparent;color:#1AB98E;font-size:17px;font-weight:400;padding:13px 31px;border-radius:9999px;text-decoration:none;border:1.5px solid #1AB98E;letter-spacing:-0.374px" style-hover="background:#E8F8F3" style-active="transform:scale(0.95)">무료 상담 신청</a>
+    </div>
+  </div>
+
+  <!-- hero abstract visual -->
+  <div style="margin-top:80px;width:100%;max-width:960px;height:300px;position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:#F5F5F5;display:flex;align-items:center;justify-content:center;">
+      <!-- large mint rings -->
+      <div style="position:absolute;width:480px;height:480px;border-radius:50%;border:1.5px solid #A8E6D7;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.5;"></div>
+      <div style="position:absolute;width:320px;height:320px;border-radius:50%;border:1.5px solid #1AB98E;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.3;"></div>
+      <div style="position:absolute;width:160px;height:160px;border-radius:50%;background:#1AB98E;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.08;animation:mintPulse 3s ease-in-out infinite;"></div>
+      <!-- stat pills floating -->
+      <div style="position:absolute;top:28%;left:12%;background:#FFFFFF;border-radius:12px;padding:14px 20px;box-shadow:0 2px 16px rgba(0,0,0,0.08);">
+        <div style="font-size:22px;font-weight:700;color:#1AB98E;font-family:'Inter',sans-serif;letter-spacing:-0.02em;">ROI 340%</div>
+        <div style="font-size:12px;color:#595959;margin-top:2px;">평균 마케팅 수익률</div>
+      </div>
+      <div style="position:absolute;top:18%;right:12%;background:#FFFFFF;border-radius:12px;padding:14px 20px;box-shadow:0 2px 16px rgba(0,0,0,0.08);">
+        <div style="font-size:22px;font-weight:700;color:#6B4423;font-family:'Inter',sans-serif;letter-spacing:-0.02em;">50+</div>
+        <div style="font-size:12px;color:#595959;margin-top:2px;">대기업 파트너사</div>
+      </div>
+      <div style="position:absolute;bottom:22%;right:18%;background:#1A1A1A;border-radius:12px;padding:14px 20px;box-shadow:0 2px 16px rgba(0,0,0,0.12);">
+        <div style="font-size:22px;font-weight:700;color:#1AB98E;font-family:'Inter',sans-serif;letter-spacing:-0.02em;">100%</div>
+        <div style="font-size:12px;color:#CCCCCC;margin-top:2px;">데이터 기반 전략</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BRAND STORY — DARK ── -->
+<section style="background:#1A1A1A;padding:100px 48px;">
+  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;">
+    <div>
+      <div style="color:#1AB98E;font-size:12px;font-weight:600;letter-spacing:0.8px;margin-bottom:24px;text-transform:uppercase;">About Us</div>
+      <h2 style="font-size:clamp(32px,4vw,48px);font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:#FFFFFF;margin-bottom:28px;font-family:'Noto Sans KR',sans-serif;word-break:keep-all;">
+        민트의 신선함과<br>초코의 깊이로
+      </h2>
+      <p style="font-size:17px;font-weight:400;line-height:1.7;color:#CCCCCC;letter-spacing:-0.374px;margin-bottom:40px;">
+        민트초코는 <span style="color:#A8E6D7;font-weight:600;">데이터와 창의성의 조화</span>로 대기업의 마케팅 성장을 이끄는 마케팅 전략 대행사입니다. 혁신적인 아이디어와 깊이 있는 인사이트로 브랜드의 새로운 가능성을 열어냅니다.
+      </p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+        <div style="border-top:2px solid #1AB98E;padding-top:20px;">
+          <div style="font-size:13px;font-weight:600;color:#1AB98E;margin-bottom:8px;letter-spacing:0.3px;">MINT — 신선함</div>
+          <div style="font-size:14px;color:#CCCCCC;line-height:1.6;">혁신적이고 현대적인 접근으로 시장을 선도합니다</div>
+        </div>
+        <div style="border-top:2px solid #6B4423;padding-top:20px;">
+          <div style="font-size:13px;font-weight:600;color:#E8DCC8;margin-bottom:8px;letter-spacing:0.3px;">CHOCO — 깊이</div>
+          <div style="font-size:14px;color:#CCCCCC;line-height:1.6;">검증된 데이터와 전략적 사고로 결과를 만들어냅니다</div>
+        </div>
+      </div>
+    </div>
+    <!-- brand visual -->
+    <div style="position:relative;height:380px;">
+      <div style="position:absolute;inset:0;background:#272729;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+        <div style="text-align:center;">
+          <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:52px;color:#1A1A1A;letter-spacing:2px;line-height:1;">MINT</div>
+          <div style="width:100%;height:2px;background:linear-gradient(90deg,transparent,#1AB98E,transparent);margin:8px 0;"></div>
+          <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:52px;color:#6B4423;letter-spacing:2px;line-height:1;opacity:0.7;">CHOCO</div>
+        </div>
+        <div style="position:absolute;bottom:32px;left:0;right:0;text-align:center;font-size:13px;color:#595959;letter-spacing:0.3px;">설립 2026 · 대한민국</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES — WHITE ── -->
+<section id="services" style="background:#FFFFFF;padding:100px 48px;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:72px;">
+      <div style="color:#1AB98E;font-size:12px;font-weight:600;letter-spacing:0.8px;margin-bottom:16px;text-transform:uppercase;">Services</div>
+      <h2 style="font-size:clamp(32px,4vw,48px);font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:#1A1A1A;font-family:'Noto Sans KR',sans-serif;">주요 서비스</h2>
+      <p style="font-size:17px;font-weight:400;color:#595959;margin-top:16px;line-height:1.6;">전략부터 실행까지, 마케팅 전 과정을 함께합니다</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#E0E0E0;">
+      <!-- 1 -->
+      <div style="background:#FFFFFF;padding:44px 36px;" style-hover="background:#F5F5F5">
+        <div style="width:44px;height:44px;background:#E8F8F3;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:28px;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 10h16M10 2l8 8-8 8" stroke="#1AB98E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 style="font-size:20px;font-weight:700;color:#1A1A1A;margin-bottom:12px;letter-spacing:-0.01em;font-family:'Noto Sans KR',sans-serif;">마케팅 전략 컨설팅</h3>
+        <p style="font-size:15px;color:#595959;line-height:1.7;">데이터 기반의 정밀한 시장 분석과 맞춤형 마케팅 전략 수립. 대기업 조직에 최적화된 실행 로드맵을 제공합니다.</p>
+      </div>
+      <!-- 2 -->
+      <div style="background:#FFFFFF;padding:44px 36px;" style-hover="background:#F5F5F5">
+        <div style="width:44px;height:44px;background:#E8F8F3;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:28px;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="7" height="7" stroke="#1AB98E" stroke-width="2"/><rect x="11" y="2" width="7" height="7" stroke="#1AB98E" stroke-width="2"/><rect x="2" y="11" width="7" height="7" stroke="#1AB98E" stroke-width="2"/><rect x="11" y="11" width="7" height="7" stroke="#1AB98E" stroke-width="2"/></svg>
+        </div>
+        <h3 style="font-size:20px;font-weight:700;color:#1A1A1A;margin-bottom:12px;letter-spacing:-0.01em;font-family:'Noto Sans KR',sans-serif;">디지털 마케팅 운영</h3>
+        <p style="font-size:15px;color:#595959;line-height:1.7;">SNS, 검색 광고, 콘텐츠 마케팅 등 디지털 채널 전반을 통합 운영. 성과 데이터를 기반으로 지속 최적화합니다.</p>
+      </div>
+      <!-- 3 -->
+      <div style="background:#FFFFFF;padding:44px 36px;" style-hover="background:#F5F5F5">
+        <div style="width:44px;height:44px;background:#E8F8F3;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:28px;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#1AB98E" stroke-width="2"/><path d="M10 6v4l3 2" stroke="#1AB98E" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3 style="font-size:20px;font-weight:700;color:#1A1A1A;margin-bottom:12px;letter-spacing:-0.01em;font-family:'Noto Sans KR',sans-serif;">브랜드 전략 수립</h3>
+        <p style="font-size:15px;color:#595959;line-height:1.7;">브랜드 포지셔닝부터 아이덴티티 구축까지. 시장에서 차별화된 브랜드 가치를 설계하고 일관된 메시지를 전달합니다.</p>
+      </div>
+      <!-- 4 -->
+      <div style="background:#FFFFFF;padding:44px 36px;" style-hover="background:#F5F5F5">
+        <div style="width:44px;height:44px;background:#E8F8F3;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:28px;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><polyline points="3,15 7,10 11,13 17,5" stroke="#1AB98E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        </div>
+        <h3 style="font-size:20px;font-weight:700;color:#1A1A1A;margin-bottom:12px;letter-spacing:-0.01em;font-family:'Noto Sans KR',sans-serif;">퍼포먼스 마케팅</h3>
+        <p style="font-size:15px;color:#595959;line-height:1.7;">ROI 중심의 성과형 광고 운영. 데이터 분석을 통한 예산 최적화로 마케팅 효율을 극대화합니다.</p>
+      </div>
+      <!-- 5 -->
+      <div style="background:#FFFFFF;padding:44px 36px;" style-hover="background:#F5F5F5">
+        <div style="width:44px;height:44px;background:#E8F8F3;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:28px;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 5h16M2 10h11M2 15h7" stroke="#1AB98E" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3 style="font-size:20px;font-weight:700;color:#1A1A1A;margin-bottom:12px;letter-spacing:-0.01em;font-family:'Noto Sans KR',sans-serif;">콘텐츠 마케팅</h3>
+        <p style="font-size:15px;color:#595959;line-height:1.7;">브랜드 스토리를 담은 콘텐츠 기획·제작. 타겟 오디언스와의 깊이 있는 연결을 만들어냅니다.</p>
+      </div>
+      <!-- 6 — CTA Card -->
+      <div style="background:#1AB98E;padding:44px 36px;display:flex;flex-direction:column;justify-content:space-between;">
+        <div>
+          <div style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.7);letter-spacing:0.5px;margin-bottom:20px;">ONE-STOP</div>
+          <h3 style="font-size:22px;font-weight:700;color:#FFFFFF;margin-bottom:16px;font-family:'Noto Sans KR',sans-serif;line-height:1.3;">전략부터 실행까지<br>한 번에</h3>
+          <p style="font-size:15px;color:rgba(255,255,255,0.85);line-height:1.7;">복잡한 마케팅 과정을 민트초코 하나로 해결하세요. 여러 대행사를 관리하는 번거로움 없이 효율적으로 진행됩니다.</p>
+        </div>
+        <a href="#contact" style="display:inline-block;background:#FFFFFF;color:#1AB98E;font-size:14px;font-weight:600;padding:12px 24px;border-radius:9999px;text-decoration:none;margin-top:32px;text-align:center;" style-hover="background:#F0FDF9" style-active="transform:scale(0.95)">상담 신청 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY US — DARK ── -->
+<section id="why" style="background:#1A1A1A;padding:100px 48px;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:72px;">
+      <div style="color:#A8E6D7;font-size:12px;font-weight:600;letter-spacing:0.8px;margin-bottom:16px;text-transform:uppercase;">Why Mintchoco</div>
+      <h2 style="font-size:clamp(32px,4vw,48px);font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:#FFFFFF;font-family:'Noto Sans KR',sans-serif;">민트초코를 선택하는 이유</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:#333333;">
+      <div style="background:#1A1A1A;padding:52px 44px;">
+        <div style="font-size:48px;font-weight:700;color:#1AB98E;margin-bottom:20px;font-family:'Inter',sans-serif;letter-spacing:-0.04em;line-height:1;">01</div>
+        <h3 style="font-size:22px;font-weight:700;color:#FFFFFF;margin-bottom:14px;font-family:'Noto Sans KR',sans-serif;">데이터 기반의 확실한 근거</h3>
+        <p style="font-size:15px;color:#CCCCCC;line-height:1.7;">검증된 데이터로 마케팅 예산을 효율적으로 운영합니다. 감이 아닌 수치로 의사결정을 지원합니다.</p>
+      </div>
+      <div style="background:#1A1A1A;padding:52px 44px;">
+        <div style="font-size:48px;font-weight:700;color:#1AB98E;margin-bottom:20px;font-family:'Inter',sans-serif;letter-spacing:-0.04em;line-height:1;">02</div>
+        <h3 style="font-size:22px;font-weight:700;color:#FFFFFF;margin-bottom:14px;font-family:'Noto Sans KR',sans-serif;">One-Stop 서비스</h3>
+        <p style="font-size:15px;color:#CCCCCC;line-height:1.7;">전략부터 실행까지 모든 과정을 일괄 처리합니다. 여러 대행사를 관리하는 번거로움 없이 효율적으로 진행됩니다.</p>
+      </div>
+      <div style="background:#1A1A1A;padding:52px 44px;">
+        <div style="font-size:48px;font-weight:700;color:#1AB98E;margin-bottom:20px;font-family:'Inter',sans-serif;letter-spacing:-0.04em;line-height:1;">03</div>
+        <h3 style="font-size:22px;font-weight:700;color:#FFFFFF;margin-bottom:14px;font-family:'Noto Sans KR',sans-serif;">대기업 맞춤형 솔루션</h3>
+        <p style="font-size:15px;color:#CCCCCC;line-height:1.7;">복잡한 대기업 조직과 프로세스에 최적화된 서비스를 제공합니다. 내부 의사결정 구조를 이해하고 협업합니다.</p>
+      </div>
+      <div style="background:#1A1A1A;padding:52px 44px;">
+        <div style="font-size:48px;font-weight:700;color:#1AB98E;margin-bottom:20px;font-family:'Inter',sans-serif;letter-spacing:-0.04em;line-height:1;">04</div>
+        <h3 style="font-size:22px;font-weight:700;color:#FFFFFF;margin-bottom:14px;font-family:'Noto Sans KR',sans-serif;">투명한 성과 관리</h3>
+        <p style="font-size:15px;color:#CCCCCC;line-height:1.7;">실시간 대시보드로 캠페인 성과를 투명하게 공유합니다. 정기 리포트와 전략 회의를 통해 지속적으로 최적화합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS — LIGHT GRAY ── -->
+<section id="process" style="background:#F5F5F5;padding:100px 48px;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:72px;">
+      <div style="color:#1AB98E;font-size:12px;font-weight:600;letter-spacing:0.8px;margin-bottom:16px;text-transform:uppercase;">Process</div>
+      <h2 style="font-size:clamp(32px,4vw,48px);font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:#1A1A1A;font-family:'Noto Sans KR',sans-serif;">서비스 프로세스</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;padding-top:24px;">
+      <!-- connector -->
+      <div style="position:absolute;top:24px;left:calc(10% + 10px);right:calc(10% + 10px);height:2px;background:#E0E0E0;z-index:0;"></div>
+      <div id="progressLine" style="position:absolute;top:24px;left:calc(10% + 10px);width:0%;height:2px;background:linear-gradient(90deg,#1AB98E,#A8E6D7);z-index:1;transition:width 1.5s ease;"></div>
+
+      <div style="text-align:center;padding:0 12px;position:relative;z-index:2;">
+        <div style="width:48px;height:48px;background:#1AB98E;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:16px;font-weight:700;color:#FFFFFF;font-family:'Inter',sans-serif;">1</div>
+        <div style="font-size:14px;font-weight:700;color:#1A1A1A;margin-bottom:8px;font-family:'Noto Sans KR',sans-serif;">현황 분석</div>
+        <div style="font-size:13px;color:#595959;line-height:1.6;">브랜드 현황 및 시장 환경 심층 분석</div>
+      </div>
+      <div style="text-align:center;padding:0 12px;position:relative;z-index:2;">
+        <div style="width:48px;height:48px;background:#1AB98E;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:16px;font-weight:700;color:#FFFFFF;font-family:'Inter',sans-serif;">2</div>
+        <div style="font-size:14px;font-weight:700;color:#1A1A1A;margin-bottom:8px;font-family:'Noto Sans KR',sans-serif;">전략 수립</div>
+        <div style="font-size:13px;color:#595959;line-height:1.6;">데이터 기반 마케팅 전략 및 로드맵</div>
+      </div>
+      <div style="text-align:center;padding:0 12px;position:relative;z-index:2;">
+        <div style="width:48px;height:48px;background:#1AB98E;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:16px;font-weight:700;color:#FFFFFF;font-family:'Inter',sans-serif;">3</div>
+        <div style="font-size:14px;font-weight:700;color:#1A1A1A;margin-bottom:8px;font-family:'Noto Sans KR',sans-serif;">실행·운영</div>
+        <div style="font-size:13px;color:#595959;line-height:1.6;">전략 실행 및 캠페인 통합 운영</div>
+      </div>
+      <div style="text-align:center;padding:0 12px;position:relative;z-index:2;">
+        <div style="width:48px;height:48px;background:#1AB98E;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:16px;font-weight:700;color:#FFFFFF;font-family:'Inter',sans-serif;">4</div>
+        <div style="font-size:14px;font-weight:700;color:#1A1A1A;margin-bottom:8px;font-family:'Noto Sans KR',sans-serif;">성과 분석</div>
+        <div style="font-size:13px;color:#595959;line-height:1.6;">정기 리포트와 KPI 기반 성과 측정</div>
+      </div>
+      <div style="text-align:center;padding:0 12px;position:relative;z-index:2;">
+        <div style="width:48px;height:48px;background:#6B4423;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:16px;font-weight:700;color:#FFFFFF;font-family:'Inter',sans-serif;">5</div>
+        <div style="font-size:14px;font-weight:700;color:#1A1A1A;margin-bottom:8px;font-family:'Noto Sans KR',sans-serif;">최적화·성장</div>
+        <div style="font-size:13px;color:#595959;line-height:1.6;">지속적 개선으로 마케팅 성과 극대화</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PACKAGES — DARK ── -->
+<section id="packages" style="background:#1A1A1A;padding:100px 48px;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:72px;">
+      <div style="color:#A8E6D7;font-size:12px;font-weight:600;letter-spacing:0.8px;margin-bottom:16px;text-transform:uppercase;">Packages</div>
+      <h2 style="font-size:clamp(32px,4vw,48px);font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:#FFFFFF;font-family:'Noto Sans KR',sans-serif;">서비스 패키지</h2>
+      <p style="font-size:17px;font-weight:300;color:#CCCCCC;margin-top:16px;">프로젝트 규모와 목표에 맞는 패키지를 선택하세요</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#333;">
+      <!-- Starter -->
+      <div style="background:#272729;padding:52px 40px;display:flex;flex-direction:column;">
+        <div style="font-size:11px;font-weight:600;color:#A8E6D7;letter-spacing:1px;margin-bottom:20px;">STARTER</div>
+        <h3 style="font-size:30px;font-weight:700;color:#FFFFFF;margin-bottom:8px;font-family:'Noto Sans KR',sans-serif;">스타터</h3>
+        <p style="font-size:14px;color:#CCCCCC;margin-bottom:36px;line-height:1.6;">빠른 시작을 원하는 팀에 최적</p>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #333;"><span style="color:#1AB98E;font-size:14px;font-weight:600;">✓</span><span style="font-size:14px;color:#CCCCCC;">마케팅 현황 진단</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #333;"><span style="color:#1AB98E;font-size:14px;font-weight:600;">✓</span><span style="font-size:14px;color:#CCCCCC;">채널별 전략 수립</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #333;"><span style="color:#1AB98E;font-size:14px;font-weight:600;">✓</span><span style="font-size:14px;color:#CCCCCC;">월간 성과 리포트</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #333;"><span style="color:#595959;font-size:14px;">—</span><span style="font-size:14px;color:#595959;">전담 팀 배정</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 0;"><span style="color:#595959;font-size:14px;">—</span><span style="font-size:14px;color:#595959;">커스텀 대시보드</span></div>
+        </div>
+        <a href="#contact" style="display:block;text-align:center;border:1.5px solid #1AB98E;color:#1AB98E;font-size:14px;font-weight:600;padding:14px 24px;border-radius:9999px;text-decoration:none;margin-top:36px;" style-hover="background:rgba(26,185,142,0.08)" style-active="transform:scale(0.97)">상담 신청</a>
+      </div>
+      <!-- Pro (highlight) -->
+      <div style="background:#1AB98E;padding:52px 40px;display:flex;flex-direction:column;position:relative;">
+        <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.7);letter-spacing:1px;margin-bottom:20px;">MOST POPULAR</div>
+        <h3 style="font-size:30px;font-weight:700;color:#FFFFFF;margin-bottom:8px;font-family:'Noto Sans KR',sans-serif;">프로</h3>
+        <p style="font-size:14px;color:rgba(255,255,255,0.85);margin-bottom:36px;line-height:1.6;">성장을 가속화하는 핵심 패키지</p>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.2);"><span style="color:#FFFFFF;font-size:14px;font-weight:600;">✓</span><span style="font-size:14px;color:rgba(255,255,255,0.9);">마케팅 현황 진단</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.2);"><span style="color:#FFFFFF;font-size:14px;font-weight:600;">✓</span><span style="font-size:14px;color:rgba(255,255,255,0.9);">채널별 전략 수립</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.2);"><span style="color:#FFFFFF;font-size:14px;font-weight:600;">✓</span><span style="font-size:14px;color:rgba(255,255,255,0.9);">주간 성과 리포트</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.2);"><span style="color:#FFFFFF;font-size:14px;font-weight:600;">✓</span><span style="font-size:14px;color:rgba(255,255,255,0.9);">전담 팀 배정</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 0;"><span style="color:rgba(255,255,255,0.5);font-size:14px;">—</span><span style="font-size:14px;color:rgba(255,255,255,0.5);">커스텀 대시보드</span></div>
+        </div>
+        <a href="#contact" style="display:block;text-align:center;background:#FFFFFF;color:#1AB98E;font-size:14px;font-weight:600;padding:14px 24px;border-radius:9999px;text-decoration:none;margin-top:36px;" style-hover="background:#F0FDF9" style-active="transform:scale(0.97)">상담 신청</a>
+      </div>
+      <!-- Enterprise -->
+      <div style="background:#272729;padding:52px 40px;display:flex;flex-direction:column;">
+        <div style="font-size:11px;font-weight:600;color:#A8E6D7;letter-spacing:1px;margin-bottom:20px;">ENTERPRISE</div>
+        <h3 style="font-size:30px;font-weight:700;color:#FFFFFF;margin-bottom:8px;font-family:'Noto Sans KR',sans-serif;">엔터프라이즈</h3>
+        <p style="font-size:14px;color:#CCCCCC;margin-bottom:36px;line-height:1.6;">대기업을 위한 완전 맞춤형 솔루션</p>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #333;"><span style="color:#1AB98E;font-size:14px;font-weight:600;">✓</span><span style="font-size:14px;color:#CCCCCC;">마케팅 현황 진단</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #333;"><span style="color:#1AB98E;font-size:14px;font-weight:600;">✓</span><span style="font-size:14px;color:#CCCCCC;">채널별 전략 수립</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #333;"><span style="color:#1AB98E;font-size:14px;font-weight:600;">✓</span><span style="font-size:14px;color:#CCCCCC;">실시간 성과 리포트</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #333;"><span style="color:#1AB98E;font-size:14px;font-weight:600;">✓</span><span style="font-size:14px;color:#CCCCCC;">전담 팀 배정</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 0;"><span style="color:#1AB98E;font-size:14px;font-weight:600;">✓</span><span style="font-size:14px;color:#CCCCCC;">커스텀 대시보드</span></div>
+        </div>
+        <a href="#contact" style="display:block;text-align:center;border:1.5px solid #1AB98E;color:#1AB98E;font-size:14px;font-weight:600;padding:14px 24px;border-radius:9999px;text-decoration:none;margin-top:36px;" style-hover="background:rgba(26,185,142,0.08)" style-active="transform:scale(0.97)">상담 신청</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA — MINT ── -->
+<section id="contact" style="background:#1AB98E;padding:120px 48px;text-align:center;">
+  <div style="max-width:720px;margin:0 auto;">
+    <div style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.65);letter-spacing:0.8px;margin-bottom:28px;text-transform:uppercase;">Get Started</div>
+    <h2 style="font-size:clamp(36px,6vw,60px);font-weight:700;line-height:1.05;letter-spacing:-0.03em;color:#FFFFFF;margin-bottom:28px;font-family:'Noto Sans KR',sans-serif;word-break:keep-all;">
+      브랜드 성장,<br>지금 시작하세요
+    </h2>
+    <p style="font-size:21px;font-weight:300;color:rgba(255,255,255,0.85);margin-bottom:52px;line-height:1.5;letter-spacing:0;">
+      민트초코와 함께 데이터와 창의성으로<br>마케팅의 새로운 장을 열어보세요.
+    </p>
+    <a href="mailto:hello@mintchoco.co.kr" style="display:inline-block;background:#FFFFFF;color:#1AB98E;font-size:17px;font-weight:600;padding:16px 40px;border-radius:9999px;text-decoration:none;letter-spacing:-0.374px;" style-hover="background:#F0FDF9" style-active="transform:scale(0.95)">무료 상담 신청하기</a>
+    <p style="font-size:14px;color:rgba(255,255,255,0.6);margin-top:20px;">hello@mintchoco.co.kr</p>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer style="background:#F5F5F5;padding:64px 48px 40px;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;">
+      <div>
+        <img src="./logo.png" alt="MINTCHOCO" style="height:40px;width:auto;margin-bottom:16px;display:block;">
+        <p style="font-size:14px;color:#595959;line-height:1.7;max-width:240px;">데이터와 창의성의 조화로 대기업의 마케팅 성장을 이끄는 전략 대행사</p>
+        <div style="display:flex;gap:12px;margin-top:20px;">
+          <div style="width:32px;height:32px;background:#E0E0E0;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;" style-hover="background:#1AB98E">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0022.43 1s-2 .9-3.18 1.18A4.48 4.48 0 0012 8.42V9.5A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+          </div>
+          <div style="width:32px;height:32px;background:#E0E0E0;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;" style-hover="background:#1AB98E">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zM17.5 6.5h.01"/></svg>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;color:#1A1A1A;margin-bottom:20px;letter-spacing:0.6px;text-transform:uppercase;">Services</div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <a href="#" style="font-size:14px;color:#595959;text-decoration:none;line-height:2.2;" style-hover="color:#1AB98E">마케팅 전략 컨설팅</a>
+          <a href="#" style="font-size:14px;color:#595959;text-decoration:none;line-height:2.2;" style-hover="color:#1AB98E">디지털 마케팅</a>
+          <a href="#" style="font-size:14px;color:#595959;text-decoration:none;line-height:2.2;" style-hover="color:#1AB98E">브랜드 전략</a>
+          <a href="#" style="font-size:14px;color:#595959;text-decoration:none;line-height:2.2;" style-hover="color:#1AB98E">퍼포먼스 마케팅</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;color:#1A1A1A;margin-bottom:20px;letter-spacing:0.6px;text-transform:uppercase;">Company</div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <a href="#" style="font-size:14px;color:#595959;text-decoration:none;line-height:2.2;" style-hover="color:#1AB98E">회사 소개</a>
+          <a href="#" style="font-size:14px;color:#595959;text-decoration:none;line-height:2.2;" style-hover="color:#1AB98E">서비스 패키지</a>
+          <a href="#" style="font-size:14px;color:#595959;text-decoration:none;line-height:2.2;" style-hover="color:#1AB98E">블로그</a>
+          <a href="#" style="font-size:14px;color:#595959;text-decoration:none;line-height:2.2;" style-hover="color:#1AB98E">채용</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;color:#1A1A1A;margin-bottom:20px;letter-spacing:0.6px;text-transform:uppercase;">Contact</div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <span style="font-size:14px;color:#595959;line-height:2.2;">hello@mintchoco.co.kr</span>
+          <span style="font-size:14px;color:#595959;line-height:2.2;">대한민국</span>
+          <span style="font-size:14px;color:#595959;line-height:2.2;">설립 2026년</span>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid #E0E0E0;padding-top:28px;display:flex;justify-content:space-between;align-items:center;">
+      <span style="font-size:12px;color:#7a7a7a;">© 2026 MINTCHOCO. All rights reserved.</span>
+      <span style="font-size:12px;color:#7a7a7a;">마케팅 전략 대행사</span>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 1440, &quot;height&quot;: 900 }
+}">
+class Component extends DCLogic {
+  componentDidMount() {
+    // ── Nav frosted-glass on scroll ──
+    const nav = document.getElementById('nav');
+    const onScroll = () => {
+      if (window.scrollY > 20) {
+        nav.style.background = 'rgba(0,0,0,0.88)';
+        nav.style.backdropFilter = 'saturate(180%) blur(20px)';
+        nav.style.webkitBackdropFilter = 'saturate(180%) blur(20px)';
+      } else {
+        nav.style.background = '#000000';
+        nav.style.backdropFilter = 'none';
+        nav.style.webkitBackdropFilter = 'none';
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // ── Scroll-reveal via IntersectionObserver on inline styles ──
+    const revealEls = [];
+    // Mark major section headings + cards with data-reveal
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(28px)';
+      el.style.transition = 'opacity 0.65s ease, transform 0.65s ease';
+      revealEls.push(el);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          const delay = (entry.target.dataset.revealDelay || 0);
+          setTimeout(() => {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    // ── Progress line animation in process section ──
+    const progressLine = document.getElementById('progressLine');
+    if (progressLine) {
+      const progressObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setTimeout(() => { progressLine.style.width = '80%'; }, 200);
+            progressObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      progressObs.observe(progressLine.parentElement);
+    }
+  }
+}
+</script>
+</body>
+</html>
