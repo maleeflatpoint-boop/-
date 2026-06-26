@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "description": "민트초코 마케팅대행사 랜딩페이지 + 챗봇",
-  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js"
